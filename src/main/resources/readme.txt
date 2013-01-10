@@ -1,0 +1,1 @@
+curl -X POST http://localhost:8080/shop/rest/order -H "Content-Type:application/json" -d '{"orderItems":[{"productName":"pizza"}] ,"name":"xxx"}'

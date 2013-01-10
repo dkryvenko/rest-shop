@@ -1,0 +1,39 @@
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+#main {
+    width: 1000px;
+    height: 800px;
+    display: block;
+    vertical-align: baseline;
+    padding-left: 100px;
+}
+
+#header {
+    width: 1000px;
+    height: 200px;
+    background: #ffe4c4;
+    overflow: hidden;
+}
+
+#logo {
+    height: 200px;
+    width: 200px;
+    float: left;
+    background: #0f0d1b
+}
+
+#about {
+    width: 800px;
+    height: 200px;
+    float: right;
+    background: #0f0d1b
+}
+
+#content {
+    width: 1000px;
+    height: 600px;
+    background: #7fffd4
+}
