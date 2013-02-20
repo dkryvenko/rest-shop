@@ -38,4 +38,8 @@
         <servlet-name>jersey-serlvet</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>shop.html</welcome-file>
+    </welcome-file-list>
 </web-app>

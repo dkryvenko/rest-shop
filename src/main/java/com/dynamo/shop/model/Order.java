@@ -15,6 +15,9 @@ public class Order {
     private String address;
     private String phone;
     private String comments;
+    private double amount;
+    private double discount;
+    private double total;
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
@@ -54,5 +57,29 @@ public class Order {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
     }
 }

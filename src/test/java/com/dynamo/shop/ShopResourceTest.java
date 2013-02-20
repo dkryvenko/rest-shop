@@ -1,11 +1,9 @@
 package com.dynamo.shop;
 
-import com.dynamo.shop.ShopResource;
 import junit.framework.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-
-import java.util.List;
 
 /**
  * Author: Dmytro Kryvenko
