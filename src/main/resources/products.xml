@@ -1,0 +1,39 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:map id="products">
+        <entry key="1001">
+                <bean class="com.dynamo.shop.model.Product">
+                    <property name="id" value="1001"/>
+                    <property name="type" value="pizza"/>
+                    <property name="name" value="Киев"/>
+                    <property name="description" value="моцарелла, салями сырокопченая, колбаски баварские, куриное филе, помидоры, кукуруза, лук, зелень"/>
+                    <property name="size" value="40"/>
+                    <property name="weight" value="1600"/>
+                    <property name="price" value="132.0"/>
+                    <property name="mediumThumb" value="img/kiev_small.png"/>
+                    <property name="largeThumb" value="img/kiev_big.png"/>
+                </bean>
+        </entry>
+        <entry key="1002">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="type" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+    </util:map>
+
+</beans>

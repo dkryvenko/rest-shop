@@ -7,17 +7,19 @@
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <bean id="placeholderConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:doublepizza.properties">
-    </property></bean>
+        <property name="location" value="classpath:doublepizza.properties"/>
+    </bean>
 
-    <context:component-scan base-package="com.dynamo.shop" />
+    <!-- context:component-scan base-package="com.dynamo.shop"/ -->
+
+    <import resource="products.xml"/>
 
     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host" value="${mail.server}" />
-        <property name="port" value="587" />
-        <property name="protocol" value="smtp" />
-        <property name="username" value="${mail.username}" />
-        <property name="password" value="${mail.password}" />
+        <property name="host" value="${mail.server}"/>
+        <property name="port" value="587"/>
+        <property name="protocol" value="smtp"/>
+        <property name="username" value="${mail.username}"/>
+        <property name="password" value="${mail.password}"/>
         <property name="defaultEncoding" value="UTF-8"/>
         <property name="javaMailProperties">
             <props>
@@ -26,6 +28,11 @@
                 <prop key="mail.smtp.starttls.required">smtps</prop>
             </props>
         </property>
+    </bean>
+
+    <bean id="shopResource" class="com.dynamo.shop.ShopResource">
+        <property name="mailSender" ref="mailSender"/>
+        <property name="products" ref="products"/>
     </bean>
 
 </beans>
