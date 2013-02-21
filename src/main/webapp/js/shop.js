@@ -23,6 +23,14 @@ var order = {
     total: 0.0
 }
 
+function getProducts() {
+    $.getJSON('/shop/rest/product', function(data) {
+        $.each(data, function() {
+            console.log(this.name)
+        })
+    })
+}
+
 function makeViewOrderAvailable() {
     $("#submitOrder").show();
 }
