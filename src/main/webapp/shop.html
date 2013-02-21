@@ -80,6 +80,31 @@
             И, как всегда, заказать у нас свыше пяти пицц, значит сэкономить <span style="font-size: 24px; margin: 0px;">20%</span>
         </div>
     </div>
+
+    <div id="productsContainer" class="span9">
+
+    </div>
+
+    <div id="productsContainerRow" class="row-fluid">
+
+    </div>
+
+    <div id="productContainer" class="span4">
+        <div class="pagination-centered" style="background-image: url(img/ten.png); margin-bottom: 10px;">
+            <div id="productName" class="pagination-centered" style="font-size: 20px; padding: 10px;"></div>
+            <img id="productMediumThumb" src="" style="padding: 10px; width: 200px; height: 200px; cursor: pointer;" onclick="" onmouseover="onMouseOverHandler(event);" onmouseout="onMouseOutHandler(event);"/>
+            <div id="productDescription" style="padding: 10px; line-height: 15px; height: 60px;" ></div>
+            <div class="row-fluid">
+                <div id="productSize" class="span6"></div>
+                <div id="productWeight" class="span6"><img src="img/scales.png"/></div>
+            </div>
+            <div class="row-fluid">
+                <div id="productPrice" class="span6"></div>
+                <div class="span6"><a id="productAddToCart" href="javascript:void(0)" class="btn btn-inverse btn-mini" onclick='addItemToCart(1, "пицца Киев", 132.0)'>в коробку</a></div>
+            </div>
+        </div>
+    </div>
+
     <div class="span9">
         <div class="row-fluid">
             <div class="span4">
@@ -93,7 +118,8 @@
                     </div>
                     <div class="row-fluid">
                         <div class="span6">132,00 грн</div>
-                        <div class="span6"><a href="javascript:void(0)" class="btn btn-inverse btn-mini" onclick='addItemToCart(1, "пицца Киев", 132.0)'>в коробку</a></div></div>
+                        <div class="span6"><a href="javascript:void(0)" class="btn btn-inverse btn-mini" onclick='addItemToCart(1, "пицца Киев", 132.0)'>в коробку</a></div>
+                    </div>
                 </div>
             </div>
             <div class="span4">
