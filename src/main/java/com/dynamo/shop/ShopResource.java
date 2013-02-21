@@ -2,43 +2,51 @@ package com.dynamo.shop;
 
 import com.dynamo.shop.model.Order;
 import com.dynamo.shop.model.OrderItem;
+import com.dynamo.shop.model.Product;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
 import org.springframework.stereotype.Component;
 
-import javax.mail.*;
+import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
+import java.util.Map;
 
 /**
  * Author: Dmytro Kryvenko
  * Date: 12/23/12
  */
 @Path("/")
-@Component
 public class ShopResource {
 
     private static final Logger LOGGER = Logger.getLogger(ShopResource.class);
 
-    @Autowired
     private JavaMailSender mailSender;
+    private Map<String, Product> products;
 
     @GET
     @Path("/version")
     public String getVersion() {
         return "1.2";
+    }
+
+    @GET
+    @Path("/product/{id}")
+    @Produces("application/json;charset=utf8")
+    public Product getProduct(@PathParam("id") String id) {
+        return products.get(id);
+    }
+
+    @GET
+    @Path("/product")
+    @Produces("application/json;charset=utf8")
+    public List<Product> getProduct() {
+        return new LinkedList<Product>(products.values());
     }
 
     @POST
@@ -73,6 +81,10 @@ public class ShopResource {
 
     public void setMailSender(JavaMailSender mailSender) {
         this.mailSender = mailSender;
+    }
+
+    public void setProducts(Map<String, Product> products) {
+        this.products = products;
     }
 
 }
