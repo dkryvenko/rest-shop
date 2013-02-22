@@ -25,8 +25,18 @@ var order = {
 
 function getProducts() {
     $.getJSON('/shop/rest/product', function(data) {
-        $.each(data, function() {
-            console.log(this.name)
+        $.each(data, function(i, product) {
+            var productContainer = $(".product-container").clone();
+
+            productContainer.find(".product-mame").text(product.name);
+            productContainer.find(".product-description").text(product.description);
+            productContainer.find(".product-medium-thumb").text(product.mediumThumb);
+            productContainer.find(".product-size").text(product.size);
+            productContainer.find(".product-weight").text(product.weight);
+            productContainer.find(".product-price").text(product.price);
+            productContainer.attr("data-product-id", product.id);
+
+            $("#productsContainerRow").append(productContainer);
         })
     })
 }
