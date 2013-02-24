@@ -10,6 +10,8 @@ $(document).ready(function () {
     });
     $("#order").hide();
     makeViewOrderUnavailble();
+
+    getProducts();
 })
 
 var order = {
@@ -25,20 +27,61 @@ var order = {
 
 function getProducts() {
     $.getJSON('/shop/rest/product', function(data) {
+        var productContainerRow;
         $.each(data, function(i, product) {
-            var productContainer = $(".product-container").clone();
+            if (i % 3 == 0) {
+                productContainerRow = $("#product-container-row").clone();
+                productContainerRow.removeAttr("id");
+                productContainerRow.removeClass("hide");
+                productContainerRow.appendTo("#productsContainer")
+            }
 
-            productContainer.find(".product-mame").text(product.name);
+            var productContainer = $("#product-container").clone();
+            productContainer.removeAttr("id");
+
+            productContainer.find(".product-name").text(product.name);
             productContainer.find(".product-description").text(product.description);
-            productContainer.find(".product-medium-thumb").text(product.mediumThumb);
+            productContainer.find(".product-medium-thumb").attr("src", product.mediumThumb);
+            productContainer.find(".product-medium-thumb").click(function() {
+                showProductDetail(product.id);
+            });
             productContainer.find(".product-size").text(product.size);
             productContainer.find(".product-weight").text(product.weight);
             productContainer.find(".product-price").text(product.price);
+            productContainer.find(".btn-add-to-cart").click(function() {
+                addItemToCart(product.id, product.name, product.price);
+            });
             productContainer.attr("data-product-id", product.id);
+            productContainer.removeClass("hide");
 
-            $("#productsContainerRow").append(productContainer);
+            productContainer.appendTo(productContainerRow);
         })
     })
+}
+
+function showProductDetail(id) {
+    $.getJSON('/shop/rest/product/' + id, function(product) {
+        var productDetail = $("#product-detail");
+        productDetail.find(".product-detail-name").text(product.name);
+        productDetail.find(".product-detail-thumb").attr("src", product.largeThumb);
+        productDetail.find(".product-detail-thumb").mouseover()
+        productDetail.find(".product-detail-description").text(product.description);
+        productDetail.find(".product-detail-size").text(product.size);
+        productDetail.find(".product-detail-weight").text(product.weight);
+        productDetail.find(".product-detail-price").text(product.price);
+        productDetail.find(".product-detail-btn-add-to-cart").click(function() {
+            addItemToCart(product.id, product.name, product.price);
+            closeProductDetail();
+        });
+        productDetail.find(".product-detail-btn-close").click(function() {
+            closeProductDetail();
+        })
+        productDetail.modal("show");
+    });
+}
+
+function closeProductDetail() {
+    $("#product-detail").modal("hide");
 }
 
 function makeViewOrderAvailable() {

@@ -8,12 +8,65 @@
     <script type="text/javascript" src="js/shop.js"></script>
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="css/shop.css" rel="stylesheet" media="screen">
     <script src="js/bootstrap.js"></script>
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Expires" CONTENT="-1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
+
+<!---------------------->
+<!-- template section -->
+<!---------------------->
+
+<div id="product-container-row" class="product-container-row row-fluid hide"></div>
+
+<div id="product-container" class="product-container span4 hide">
+    <div class="pagination-centered" style="background-image: url(img/ten.png); margin-bottom: 10px;">
+        <div class="product-name"></div>
+        <img class="product-medium-thumb" src="" onmouseover="onMouseOverHandler(event);" onmouseout="onMouseOutHandler(event);"/>
+        <div class="product-description"></div>
+        <div class="row-fluid">
+            <div class="product-size span6"></div>
+            <div class="product-weight span6"><img src="img/scales.png"/></div>
+        </div>
+        <div class="row-fluid">
+            <div class="product-price span6"></div>
+            <div class="span6">
+                <a class="btn-add-to-cart btn btn-inverse btn-mini" href="javascript:void(0)">в коробку</a></div>
+        </div>
+    </div>
+</div>
+
+<div id="product-detail" class="product-detail modal hide fade">
+    <div class="modal-body">
+        <div class="row-fluid">
+            <div class="span8 pagination-centered">
+                <div class="product-detail-name">"Киев"</div>
+                <img class="product-detail-thumb" src="" onmouseover="onMouseOverHandler(event);"onmouseout="onMouseOutHandler(event);">
+            </div>
+            <div class="span4">
+                <div class="row-fluid" style="height: 450px;">
+                    <div class="product-detail-description"></div>
+                    <div class="product-detail-size"></div>
+                    <div class="product-detail-weight"></div>
+                    <div class="product-detail-price"></div>
+                </div>
+                <div class="row-fluid pagination-right">
+                    <a href="javascript:void(0);" class="product-detail-btn-add-to-cart btn btn-small btn-inverse">В Коробку</a>
+                    <a href="javascript:void(0);" class="product-detail-btn-close btn btn-small btn-inverse">Закрыть</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----------------------------->
+<!-- end of template section -->
+<!----------------------------->
+
 <div class="container">
 
 <!-- Main hero unit for a primary marketing message or call to action -->
@@ -51,8 +104,6 @@
     </div>
 </div>
 
-<!-- div class="hero-unit"><img src="img/text_logo.png"></div -->
-
 <div class="row">
     <div class="span3 pagination-centered" style="background-image: url(img/ten.png); font-size: 12px; line-height: 14px;">
         <div style="margin-top: 30px; margin-bottom: 15px;">Заказ по телефонам</div>
@@ -81,30 +132,11 @@
         </div>
     </div>
 
-    <div id="productsContainer" class="span9">
+    <div id="productsContainer" class="span9"></div>
+</div>
 
-    </div>
 
-    <div id="productsContainerRow" class="row-fluid">
-
-    </div>
-
-    <div id="productContainer" class="span4">
-        <div class="pagination-centered" style="background-image: url(img/ten.png); margin-bottom: 10px;">
-            <div id="productName" class="pagination-centered" style="font-size: 20px; padding: 10px;"></div>
-            <img id="productMediumThumb" src="" style="padding: 10px; width: 200px; height: 200px; cursor: pointer;" onclick="" onmouseover="onMouseOverHandler(event);" onmouseout="onMouseOutHandler(event);"/>
-            <div id="productDescription" style="padding: 10px; line-height: 15px; height: 60px;" ></div>
-            <div class="row-fluid">
-                <div id="productSize" class="span6"></div>
-                <div id="productWeight" class="span6"><img src="img/scales.png"/></div>
-            </div>
-            <div class="row-fluid">
-                <div id="productPrice" class="span6"></div>
-                <div class="span6"><a id="productAddToCart" href="javascript:void(0)" class="btn btn-inverse btn-mini" onclick='addItemToCart(1, "пицца Киев", 132.0)'>в коробку</a></div>
-            </div>
-        </div>
-    </div>
-
+    <!--
     <div class="span9">
         <div class="row-fluid">
             <div class="span4">
@@ -333,6 +365,8 @@
     </div>
 </div>
 
+-->
+
 <div id="order" class="modal hide fade" style="background: transparent">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" >&times;</button>
@@ -429,418 +463,6 @@
     <div class="span1">
         <a class="btn btn-small btn-inverse" href="#" id="removeItem" onclick="removeItemHandler(event);">X</a>
     </div>
-</div>
-
-<!-- ########################################## -->
-<!-- #           ITEM DETAIL SECTION          # -->
-<!-- ########################################## -->
-<div id="kiev" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Киев"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>моцарелла, салями сырокопченая, колбаски баварские, куриное филе, помидоры, кукуруза, лук, зелень</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1600 грамм</h5>
-                    <br/>
-                    <h5>цена: 123 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(1, "пицца Киев", 132.0);closeItemDetails("kiev");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("kiev");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="mafia" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Мафия"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1500 грамм</h5>
-                    <br/>
-                    <h5>цена: 123 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(2, "пицца Мафия", 123.0);closeItemDetails("mafia");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("mafia");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="marlboro" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Marlboro"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>тонкое тесто, фирменный соус, моцарелла, ветчина, шампиньоны, корнишоны, помидоры</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1450 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(3, "пицца Мальборо", 123.0);closeItemDetails("marlboro");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("marlboro");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="bavaria" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Bavaria"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>соус, моцарелла, дабл баварские колбаски, шампиньоны, оливки, лук, помидоры</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1500 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(4, "пицца Bavaria", 123.0);closeItemDetails("bavaria");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("bavaria");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="assorti" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Ассорти"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>фирменный соус, моцарелла, бекон, ветчина, копчёная куриная грудинка, шампиньоны, сладкий перец</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1550 грамм</h5>
-                    <br/>
-                    <h5>цена: 148.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(5, "пицца Ассорти", 148.0);closeItemDetails("assorti");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("assorti");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="kalambria" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Калабрия"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>тонкое тесто, фирменный томатный соус, моцарелла, копчёное курин. филе, бекон, маринованный лук и помидоры</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1500 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(6, "пицца Калабрия", 123.0);closeItemDetails("kalambria");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("kalambria");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="barbeky" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Барбекю"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>соус BBQ, моцарелла, чикен гриль, помидоры, лук, зелень</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1300 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(7, "пицца Барбекю", 123.0);closeItemDetails("barbeky");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("barbeky");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="trinity" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Trinity"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>1/3 пиццы: моцарелла, салями, лук, помидоры;
-                        1/3 пиццы: моцарелла, ветчина, грибы, маслины;
-                        1/3 пиццы: моцарелла, куриное филе, ананасы</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1470 грамм</h5>
-                    <br/>
-                    <h5>цена: 143.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(8, "пицца Trinity", 143.0);closeItemDetails("trinity");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("trinity");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="florent" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Флорентийская"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>фирменный соус, моцарелла, свинина маринованная, бекон, маринованные баклажаны, перец болгарский</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1290 грамм</h5>
-                    <br/>
-                    <h5>цена: 143.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(9, "пицца Флорентийская", 143.0);closeItemDetails("florent");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("florent");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="four_cheeses" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Четыре сыра"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>белый соус, сыр Дор-блю, сыр Моцарелла, сыр Пармезан, сыр Фета</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1400 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(10, "пицца Четыре сыра", 123.0);closeItemDetails("four_cheeses");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("four_cheeses");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="chicken_tomato" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Курица и помидоры"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>фирменный соус, моцарелла, куриное филе, помидоры, лук, зелень. Эта вкусная пицца подходит как для взрослых, так и для деток</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1300 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(11, "пицца Курица и помидоры", 123.0);closeItemDetails("chicken_tomato");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("chicken_tomato");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="brezza" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Brezza"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>моцарелла, печень трески, каперсы, помидоры, оливки, укроп</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1250 грамм</h5>
-                    <br/>
-                    <h5>цена: 143.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(12, "пицца Brezza", 143.0);closeItemDetails("brezza");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("brezza");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="gavay" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Гавайская"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>фирменный соус, моцарелла,  ветчина, ананасы</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1390 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(13, "пицца Гавайская", 143.0);closeItemDetails("gavay");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("gavay");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="Grecheskaya" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Греческая"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>фирменный соус, моцарелла, "фета", копч. куриное филе, оливки, перец, помидоры, лук, зелень</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1535 грамм</h5>
-                    <br/>
-                    <h5>цена: 123.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(14, "пицца Греческая", 123.0);closeItemDetails("Grecheskaya");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("Grecheskaya");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="Marinara" class="modal hide fade" style="background: transparent">
-    <div class="modal-body">
-        <div class="row-fluid">
-            <div class="span8 pagination-centered">
-                <h2>"Маринара"</h2>
-                <img src="" style="background: transparent; width: 450px; height: 450px;">
-            </div>
-            <div class="span4">
-                <div class="row-fluid" style="height: 450px;">
-                    <br/>
-                    <h5>соус, моцарелла, креветки, мидии, кальмары, осьминог,  оливки, лимон</h5>
-                    <br/>
-                    <h5>диаметр: 40 см</h5>
-                    <br/>
-                    <h5>вес: 1400 грамм</h5>
-                    <br/>
-                    <h5>цена: 148.00 грн</h5>
-                </div>
-                <div class="row-fluid pagination-right">
-                    <a href="#" class="btn btn-small btn-inverse" onclick='addItemToCart(15, "пицца Маринара", 148.0);closeItemDetails("Marinara");'>В Коробку</a>
-                    <a href="#" class="btn btn-small btn-inverse" onclick='closeItemDetails("Marinara");'>Закрыть</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 </div>
 </body>
 
