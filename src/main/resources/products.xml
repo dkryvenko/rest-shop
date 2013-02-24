@@ -11,7 +11,7 @@
         <entry key="1001">
                 <bean class="com.dynamo.shop.model.Product">
                     <property name="id" value="1001"/>
-                    <property name="type" value="pizza"/>
+                    <property name="category" value="pizza"/>
                     <property name="name" value="Киев"/>
                     <property name="description" value="моцарелла, салями сырокопченая, колбаски баварские, куриное филе, помидоры, кукуруза, лук, зелень"/>
                     <property name="size" value="40"/>
@@ -24,7 +24,7 @@
         <entry key="1002">
             <bean class="com.dynamo.shop.model.Product">
                 <property name="id" value="1002"/>
-                <property name="type" value="pizza"/>
+                <property name="category" value="pizza"/>
                 <property name="name" value="Мафия"/>
                 <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
                 <property name="size" value="40"/>
@@ -34,6 +34,274 @@
                 <property name="largeThumb" value="img/mafia_big.png"/>
             </bean>
         </entry>
+        <entry key="1003">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1003"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value=" Marlboro"/>
+                <property name="description" value="тонкое тесто, фирменный соус, моцарелла, ветчина, шампиньоны, корнишоны, помидоры. украшается зеленью"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1450"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/marlboro_small.png"/>
+                <property name="largeThumb" value="img/marlboro_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1004">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1005">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1006">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1007">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1008">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1009">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1010">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1011">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1012">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1013">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1014">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1015">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="1016">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="1002"/>
+                <property name="category" value="pizza"/>
+                <property name="name" value="Мафия"/>
+                <property name="description" value="соус, моцарелла, ветчина, салями, перец острый халапеньо, шампиньоны, лук"/>
+                <property name="size" value="40"/>
+                <property name="weight" value="1500"/>
+                <property name="price" value="123.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+
+
+
+        <entry key="2001">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="2001"/>
+                <property name="category" value="salad"/>
+                <property name="name" value="Греческий"/>
+                <property name="description" value="сыр, маслины, перец, уксус"/>
+                <property name="size" value="1.0"/>
+                <property name="weight" value="250"/>
+                <property name="price" value="20.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="2002">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="2002"/>
+                <property name="category" value="salad"/>
+                <property name="name" value="Цезарь"/>
+                <property name="description" value="перец, маслины, томаты, курица"/>
+                <property name="size" value="1.0"/>
+                <property name="weight" value="250"/>
+                <property name="price" value="30.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="2003">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="2003"/>
+                <property name="category" value="salad"/>
+                <property name="name" value="Нарзека"/>
+                <property name="description" value="огурцы, помидоры"/>
+                <property name="size" value="1.0"/>
+                <property name="weight" value="400"/>
+                <property name="price" value="20.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="2004">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="2004"/>
+                <property name="category" value="salad"/>
+                <property name="name" value="Мимоза"/>
+                <property name="description" value="вская херня"/>
+                <property name="size" value="1.0"/>
+                <property name="weight" value="350"/>
+                <property name="price" value="28.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+
+
+
+
+        <entry key="3001">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="3001"/>
+                <property name="category" value="beverage"/>
+                <property name="name" value="Coca-Cola"/>
+                <property name="description" value=""/>
+                <property name="size" value="1.0"/>
+                <property name="weight" value="1000"/>
+                <property name="price" value="20.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+        <entry key="3002">
+            <bean class="com.dynamo.shop.model.Product">
+                <property name="id" value="3002"/>
+                <property name="category" value="beverage"/>
+                <property name="name" value="Sprite"/>
+                <property name="description" value=""/>
+                <property name="size" value="1.0"/>
+                <property name="weight" value="1000"/>
+                <property name="price" value="20.0"/>
+                <property name="mediumThumb" value="img/mafia_small.png"/>
+                <property name="largeThumb" value="img/mafia_big.png"/>
+            </bean>
+        </entry>
+
     </util:map>
 
 </beans>

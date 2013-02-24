@@ -1,3 +1,21 @@
+.product-container-1 {
+    background-image: url(../img/ten.png);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.product-container-2 {
+    background-image: url(../img/ten.png);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.product-container-3 {
+    background-image: url(../img/ten.png);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
 .product-name {
     font-size: 20px;
     padding: 10px;
@@ -16,6 +34,13 @@
     line-height: 15px;
     height: 60px;
 }
+
+.product-description-2 {
+    padding: 10px;
+    line-height: 15px;
+    height: 30px;
+}
+
 
 .product-size {
 

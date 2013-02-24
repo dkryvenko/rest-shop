@@ -11,7 +11,7 @@ $(document).ready(function () {
     $("#order").hide();
     makeViewOrderUnavailble();
 
-    getProducts("pizza");
+    showPizzas();
 })
 
 var order = {
@@ -25,8 +25,8 @@ var order = {
     total: 0.0
 }
 
-function getProducts(category) {
-    $.getJSON('/shop/rest/product?category=' + category, function(data) {
+function showPizzas() {
+    $.getJSON('/shop/rest/product?category=pizza', function(data) {
         $("#productsContainer").empty();
         var productContainerRow;
         $.each(data, function(i, product) {
@@ -37,7 +37,7 @@ function getProducts(category) {
                 productContainerRow.appendTo("#productsContainer")
             }
 
-            var productContainer = $("#product-container").clone();
+            var productContainer = $("#product-container-1").clone();
             productContainer.removeAttr("id");
 
             productContainer.find(".product-name").text(product.name);
@@ -46,9 +46,73 @@ function getProducts(category) {
             productContainer.find(".product-medium-thumb").click(function() {
                 showProductDetail(product.id);
             });
-            productContainer.find(".product-size").text(product.size);
-            productContainer.find(".product-weight").text(product.weight);
+            productContainer.find(".product-size").text(product.size + " см");
+            productContainer.find(".product-weight").text(product.weight + " грамм");
             productContainer.find(".product-price").text(product.price);
+            productContainer.find(".product-price").formatCurrency({positiveFormat: '%n %s', symbol: ' грн'});
+            productContainer.find(".btn-add-to-cart").click(function() {
+                addItemToCart(product.id, product.name, product.price);
+            });
+            productContainer.attr("data-product-id", product.id);
+            productContainer.removeClass("hide");
+
+            productContainer.appendTo(productContainerRow);
+        })
+    })
+}
+
+function showSalads() {
+    $.getJSON('/shop/rest/product?category=salad', function(data) {
+        $("#productsContainer").empty();
+        var productContainerRow;
+        $.each(data, function(i, product) {
+            if (i % 3 == 0) {
+                productContainerRow = $("#product-container-row").clone();
+                productContainerRow.removeAttr("id");
+                productContainerRow.removeClass("hide");
+                productContainerRow.appendTo("#productsContainer")
+            }
+
+            var productContainer = $("#product-container-2").clone();
+            productContainer.removeAttr("id");
+
+            productContainer.find(".product-name").text(product.name);
+            productContainer.find(".product-description-2").text(product.description);
+            productContainer.find(".product-medium-thumb").attr("src", product.mediumThumb);
+            productContainer.find(".product-weight").text(product.weight + " грамм");
+            productContainer.find(".product-price").text(product.price);
+            productContainer.find(".product-price").formatCurrency({positiveFormat: '%n %s', symbol: ' грн'});
+            productContainer.find(".btn-add-to-cart").click(function() {
+                addItemToCart(product.id, product.name, product.price);
+            });
+            productContainer.attr("data-product-id", product.id);
+            productContainer.removeClass("hide");
+
+            productContainer.appendTo(productContainerRow);
+        })
+    })
+}
+
+function showBeverages() {
+    $.getJSON('/shop/rest/product?category=beverage', function(data) {
+        $("#productsContainer").empty();
+        var productContainerRow;
+        $.each(data, function(i, product) {
+            if (i % 3 == 0) {
+                productContainerRow = $("#product-container-row").clone();
+                productContainerRow.removeAttr("id");
+                productContainerRow.removeClass("hide");
+                productContainerRow.appendTo("#productsContainer")
+            }
+
+            var productContainer = $("#product-container-3").clone();
+            productContainer.removeAttr("id");
+
+            productContainer.find(".product-name").text(product.name);
+            productContainer.find(".product-medium-thumb").attr("src", product.mediumThumb);
+            productContainer.find(".product-size").text(product.size + ' л');
+            productContainer.find(".product-price").text(product.price);
+            productContainer.find(".product-price").formatCurrency({positiveFormat: '%n %s', symbol: ' грн'});
             productContainer.find(".btn-add-to-cart").click(function() {
                 addItemToCart(product.id, product.name, product.price);
             });
@@ -102,7 +166,7 @@ function closeItemDetails(name) {
     $("#" + name).modal('hide');
 }
 
-function addItemToCart(id, product, price) {
+function addItemToCart(id, category, product, price) {
     var itemCount = order.orderItems.length;
     for (var i = 0; i < itemCount; i++) {
         var orderItem = order.orderItems[i];
@@ -116,6 +180,7 @@ function addItemToCart(id, product, price) {
 
     var orderItem = {
         id: id,
+        category: category,
         product: product,
         price: price,
         quantity: 1,
@@ -153,6 +218,15 @@ function removeItemFromCart(itemId) {
 function getQuantity() {
     var q = new Number(0);
     for (var i = 0; i < order.orderItems.length; i++) {
+        q += new Number(order.orderItems[i].quantity);
+    }
+    return q;
+}
+
+function getPizzaQuantity() {
+    var q = new Number(0);
+    for (var i = 0; i < order.orderItems.length; i++) {
+        if (order.orderItems[i].cate)
         q += new Number(order.orderItems[i].quantity);
     }
     return q;
@@ -298,7 +372,13 @@ function onMouseOutHandler(event) {
 }
 
 function navigate(category) {
-    getProducts(category);
     $("[id^=nav-]").removeClass("active");
     $("#nav-" + category).addClass("active");
+    if (category == 'pizza') {
+        showPizzas();
+    } else if (category == 'salad') {
+        showSalads();
+    } else if (category == 'beverage') {
+        showBeverages();
+    }
 }

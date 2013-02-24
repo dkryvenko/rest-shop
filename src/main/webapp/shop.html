@@ -22,19 +22,47 @@
 
 <div id="product-container-row" class="product-container-row row-fluid hide"></div>
 
-<div id="product-container" class="product-container span4 hide">
-    <div class="pagination-centered" style="background-image: url(img/ten.png); margin-bottom: 10px;">
-        <div class="product-name"></div>
-        <img class="product-medium-thumb" src="" onmouseover="onMouseOverHandler(event);" onmouseout="onMouseOutHandler(event);"/>
-        <div class="product-description"></div>
-        <div class="row-fluid">
-            <div class="product-size span6"></div>
-            <div class="product-weight span6"><img src="img/scales.png"/></div>
+<div id="product-container-1" class="product-container-1 span4 hide">
+    <div class="product-name"></div>
+    <img class="product-medium-thumb" src="" onmouseover="onMouseOverHandler(event);" onmouseout="onMouseOutHandler(event);"/>
+    <div class="product-description"></div>
+    <div class="row-fluid">
+        <div class="product-size span6"></div>
+        <div class="product-weight span6"><img src="img/scales.png"/></div>
+    </div>
+    <div class="row-fluid">
+        <div class="product-price span6"></div>
+        <div class="span6">
+            <a class="btn-add-to-cart btn btn-inverse btn-mini" href="javascript:void(0)">в коробку</a>
         </div>
-        <div class="row-fluid">
-            <div class="product-price span6"></div>
-            <div class="span6">
-                <a class="btn-add-to-cart btn btn-inverse btn-mini" href="javascript:void(0)">в коробку</a></div>
+    </div>
+</div>
+
+<div id="product-container-2" class="product-container-2 span4 hide">
+    <div class="product-name"></div>
+    <img class="product-medium-thumb" src="" onmouseover="onMouseOverHandler(event);" onmouseout="onMouseOutHandler(event);"/>
+    <div class="product-description-2"></div>
+    <div class="row-fluid">
+        <div class="product-weight span6"></div>
+        <div class="product-price span6"><img src="img/scales.png"/></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 offset6">
+            <a class="btn-add-to-cart btn btn-inverse btn-mini" href="javascript:void(0)">в коробку</a>
+        </div>
+    </div>
+</div>
+
+<div id="product-container-3" class="product-container-3 span4 hide">
+    <div class="product-name"></div>
+    <img class="product-medium-thumb" src=""/>
+    <div class="row-fluid">
+        <div class="product-size span6"></div>
+        <div class="product-price span6"></div>
+    </div>
+    <div class="row-fluid">
+        <div class="span6 offset6">
+            <a class="btn-add-to-cart btn btn-inverse btn-mini" href="javascript:void(0)">в коробку</a>
         </div>
     </div>
 </div>
@@ -61,7 +89,6 @@
         </div>
     </div>
 </div>
-
 
 <!----------------------------->
 <!-- end of template section -->
@@ -138,7 +165,6 @@
                 <ul class="nav">
                     <li id="nav-pizza" class="active"><a href="javascript:navigate('pizza');">Пиццы</a></li>
                     <li id="nav-salad"><a href="javascript:navigate('salad');">Салаты</a></li>
-                    <li id="nav-burito"><a href="javascript:navigate('burito');">Буритто</a></li>
                     <li id="nav-beverage"><a href="javascript:navigate('beverage');">Напитки</a></li>
                 </ul>
             </div>
