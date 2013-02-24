@@ -11,7 +11,7 @@ public class Product {
     public static final String PRODUCT_TYPE_FOOD = "food";
 
     private String id;
-    private String type;
+    private String category;
     private String name;
     private String description;
     private double weight;
@@ -29,12 +29,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getName() {
