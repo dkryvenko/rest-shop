@@ -28,6 +28,8 @@ public class ShopResource {
 
     private static final Logger LOGGER = Logger.getLogger(ShopResource.class);
 
+    private static final String STATUS_RUNNING = "running";
+
     private final JavaMailSender mailSender;
     private final Map<String, Product> products;
 
@@ -37,9 +39,9 @@ public class ShopResource {
     }
 
     @GET
-    @Path("/version")
-    public String getVersion() {
-        return "1.2";
+    @Path("/status")
+    public String getStatus() {
+        return STATUS_RUNNING;
     }
 
     @GET
@@ -52,24 +54,20 @@ public class ShopResource {
     @GET
     @Path("/product")
     @Produces("application/json;charset=utf8")
-    public List<Product> getProduct() {
-        return new LinkedList<Product>(products.values());
-    }
-
-    @GET
-    @Path("/product")
-    @Produces("application/json;charset=utf8")
-    public List<Product> getProductsByCategory(@QueryParam("category") String category) {
-        Collection<Product> allProducts = products.values();
-        List<Product> products = new LinkedList<Product>();
-        for(Product product: allProducts) {
-            if (category.equals(product.getCategory())) {
-                products.add(product);
+    public List<Product> getProducts(@QueryParam("category") String category) {
+        if (category == null) {
+            return new LinkedList<Product>(products.values());
+        } else {
+            Collection<Product> allProducts = products.values();
+            List<Product> filteredProducts = new LinkedList<Product>();
+            for(Product product: allProducts) {
+                if (category.equals(product.getCategory())) {
+                    filteredProducts.add(product);
+                }
             }
+            return filteredProducts;
         }
-        return products;
     }
-
 
     @POST
     @Path("/order")
@@ -95,7 +93,8 @@ public class ShopResource {
                     append(orderItem.getQuantity()).append("\t").append(orderItem.getAmount()).append("\n");
         }
         body.append("SUM: ").append(order.getAmount()).append("\n");
-        body.append("DISCOUNT: ").append(order.getDiscount() * 100).append("\n");;
+        body.append("DISCOUNT: ").append(order.getDiscount() * 100).append("\n");
+        ;
         body.append("TOTAL: ").append(order.getTotal()).append("\n");
         msg.setText(body.toString(), "UTF-8");
         mailSender.send(msg);

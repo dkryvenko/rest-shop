@@ -30,23 +30,44 @@ public class ShopResourceTest {
     }
 
     @Test
-    public void getVersion() {
-        String version = shopResource.getVersion();
-        Assert.assertEquals("1.2", version);
+    public void getStatus() {
+        String version = shopResource.getStatus();
+        Assert.assertEquals("running", version);
     }
 
     @Test
     public void getProducts() {
         Product p1 = new Product();
+        p1.setCategory("c1");
         Product p2 = new Product();
+        p2.setCategory("c2");
         expectedProducts.put("101", p1);
         expectedProducts.put("102", p2);
 
-        List<Product> actualProducts = shopResource.getProduct();
+        List<Product> actualProducts = shopResource.getProducts(null);
 
         Assert.assertEquals(2, actualProducts.size());
         Assert.assertEquals(p1, actualProducts.get(1));
         Assert.assertEquals(p2, actualProducts.get(0));
+    }
+
+    @Test
+    public void getProductsByCategory() {
+        Product p1 = new Product();
+        p1.setCategory("c1");
+        Product p2 = new Product();
+        p2.setCategory("c2");
+        Product p3 = new Product();
+        p3.setCategory("c2");
+        expectedProducts.put("101", p1);
+        expectedProducts.put("102", p2);
+        expectedProducts.put("103", p3);
+
+        List<Product> actualProducts = shopResource.getProducts("c2");
+
+        Assert.assertEquals(2, actualProducts.size());
+        Assert.assertEquals(p3, actualProducts.get(0));
+        Assert.assertEquals(p2, actualProducts.get(1));
     }
 
     @Test
@@ -60,29 +81,5 @@ public class ShopResourceTest {
 
         Assert.assertEquals(p1, actualProduct);
     }
-
-    @Test
-    public void getProductsByCategory() {
-        Product p1 = new Product();
-        p1.setCategory("c1");
-        Product p2 = new Product();
-        p2.setCategory("c2");
-        Product p3 = new Product();
-        p3.setCategory("c3");
-        Product p4 = new Product();
-        p4.setCategory("c2");
-        expectedProducts.put("101", p1);
-        expectedProducts.put("102", p2);
-        expectedProducts.put("103", p3);
-        expectedProducts.put("104", p4);
-
-
-        List<Product> actualProducts = shopResource.getProductsByCategory("c2");
-
-        Assert.assertEquals(2, actualProducts.size());
-        Assert.assertEquals(p4, actualProducts.get(0));
-        Assert.assertEquals(p2, actualProducts.get(1));
-    }
-
 
 }

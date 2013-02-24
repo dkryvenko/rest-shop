@@ -11,7 +11,7 @@ $(document).ready(function () {
     $("#order").hide();
     makeViewOrderUnavailble();
 
-    getProducts();
+    getProducts("pizza");
 })
 
 var order = {
@@ -25,8 +25,9 @@ var order = {
     total: 0.0
 }
 
-function getProducts() {
-    $.getJSON('/shop/rest/product', function(data) {
+function getProducts(category) {
+    $.getJSON('/shop/rest/product?category=' + category, function(data) {
+        $("#productsContainer").empty();
         var productContainerRow;
         $.each(data, function(i, product) {
             if (i % 3 == 0) {
@@ -294,4 +295,10 @@ function onMouseOverHandler(event) {
 
 function onMouseOutHandler(event) {
     event.target.style.opacity = 1;
+}
+
+function navigate(category) {
+    getProducts(category);
+    $("[id^=nav-]").removeClass("active");
+    $("#nav-" + category).addClass("active");
 }
