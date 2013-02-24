@@ -31,8 +31,8 @@
     </bean>
 
     <bean id="shopResource" class="com.dynamo.shop.ShopResource">
-        <property name="mailSender" ref="mailSender"/>
-        <property name="products" ref="products"/>
+        <constructor-arg ref="products"/>
+        <constructor-arg ref="mailSender"/>
     </bean>
 
 </beans>

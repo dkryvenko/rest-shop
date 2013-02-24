@@ -5,6 +5,7 @@ import com.dynamo.shop.model.OrderItem;
 import com.dynamo.shop.model.Product;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -26,8 +28,13 @@ public class ShopResource {
 
     private static final Logger LOGGER = Logger.getLogger(ShopResource.class);
 
-    private JavaMailSender mailSender;
-    private Map<String, Product> products;
+    private final JavaMailSender mailSender;
+    private final Map<String, Product> products;
+
+    public ShopResource(Map<String, Product> products, JavaMailSender mailSender) {
+        this.products = products;
+        this.mailSender = mailSender;
+    }
 
     @GET
     @Path("/version")
@@ -48,6 +55,21 @@ public class ShopResource {
     public List<Product> getProduct() {
         return new LinkedList<Product>(products.values());
     }
+
+    @GET
+    @Path("/product")
+    @Produces("application/json;charset=utf8")
+    public List<Product> getProductsByCategory(@QueryParam("category") String category) {
+        Collection<Product> allProducts = products.values();
+        List<Product> products = new LinkedList<Product>();
+        for(Product product: allProducts) {
+            if (category.equals(product.getCategory())) {
+                products.add(product);
+            }
+        }
+        return products;
+    }
+
 
     @POST
     @Path("/order")
@@ -77,14 +99,6 @@ public class ShopResource {
         body.append("TOTAL: ").append(order.getTotal()).append("\n");
         msg.setText(body.toString(), "UTF-8");
         mailSender.send(msg);
-    }
-
-    public void setMailSender(JavaMailSender mailSender) {
-        this.mailSender = mailSender;
-    }
-
-    public void setProducts(Map<String, Product> products) {
-        this.products = products;
     }
 
 }
