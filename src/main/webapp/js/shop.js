@@ -51,7 +51,7 @@ function showPizzas() {
             productContainer.find(".product-price").text(product.price);
             productContainer.find(".product-price").formatCurrency({positiveFormat: '%n %s', symbol: ' грн'});
             productContainer.find(".btn-add-to-cart").click(function() {
-                addItemToCart(product.id, product.name, product.price);
+                addItemToCart(product.id);
             });
             productContainer.attr("data-product-id", product.id);
             productContainer.removeClass("hide");
@@ -157,53 +157,24 @@ function makeViewOrderUnavailble() {
     $("#submitOrder").hide();
 }
 
-function addItemToCart(id, category, product, price) {
+function addItemToCart(productId) {
     var itemCount = order.orderItems.length;
-    for (var i = 0; i < itemCount; i++) {
-        var orderItem = order.orderItems[i];
-        if (orderItem.id == id) {
-            orderItem.quantity++;
-            $("#itemCount").html(getQuantity());
-            calculateOrderTotal();
-            return;
-        }
-    }
-
     var orderItem = {
-        id: id,
-        category: category,
-        product: product,
-        price: price,
-        quantity: 1,
-        amount: price
+        productId: productId,
+        quantity: 1
     }
-
     order.orderItems[itemCount] = orderItem;
-    $("#itemCount").text(getQuantity());
-    $("#box").attr("src", "img/box.png");
-    calculateOrderTotal();
     makeViewOrderAvailable();
 }
 
-function removeItemFromCart(itemId) {
+function removeItemFromCart(productId) {
     var itemCount = order.orderItems.length;
     for (var i = 0; i < itemCount; i++) {
         var orderItem = order.orderItems[i];
-        if (orderItem.id == itemId) {
+        if (orderItem.productId == productId) {
             order.orderItems.splice(i, 1);
         }
     }
-    calculateOrderTotal();
-
-    if (getQuantity() == 0) {
-        $("#box").attr("src", "img/box_empty.png");
-        $("#itemCount").text("");
-        makeViewOrderUnavailble();
-    } else {
-        $("#itemCount").text(getQuantity());
-    }
-
-    viewOrder();
 }
 
 function getQuantity() {
@@ -214,26 +185,14 @@ function getQuantity() {
     return q;
 }
 
-function getPizzaQuantity() {
-    var q = new Number(0);
-    for (var i = 0; i < order.orderItems.length; i++) {
-        if (order.orderItems[i].cate)
-        q += new Number(order.orderItems[i].quantity);
-    }
-    return q;
-}
-
-function updateItemQuantity(itemId, quantity) {
+function updateItemQuantity(productId, quantity) {
     var itemCount = order.orderItems.length;
     for (var i = 0; i < itemCount; i++) {
         var orderItem = order.orderItems[i];
-        if (orderItem.id == itemId) {
+        if (orderItem.productId == productId) {
             orderItem.quantity = quantity;
         }
     }
-    $("#itemCount").html(getQuantity());
-    calculateOrderTotal();
-    viewOrder();
 }
 
 function calculateOrderTotal() {
@@ -330,7 +289,7 @@ function submitOrder() {
     order.comments = $("#comments").val();
 
     jQuery.ajax ({
-        url: "/shop/rest/order",
+        url: "/shop/rest/submittedOrder",
         type: "POST",
         data: JSON.stringify(order),
         dataType: "json",
