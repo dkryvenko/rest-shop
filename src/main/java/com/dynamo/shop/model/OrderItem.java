@@ -1,64 +1,56 @@
 package com.dynamo.shop.model;
 
+import java.math.BigDecimal;
+
 /**
  * Author: Dmytro Kryvenko
  * Date: 1/9/13
  */
 public class OrderItem {
 
-    private long id;
-    private String product;
-    private double price;
-    private double quantity;
-    private double amount;
+    private String productId;
+    private int quantity;
+    private String productName;
+    private BigDecimal price;
+    private BigDecimal amount;
 
-    public OrderItem() {
+    public String getProductId() {
+        return productId;
     }
 
-    public OrderItem(String product, double price, double quantity) {
-        this.product = product;
-        this.price = price;
-        this.quantity = quantity;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String productName) {
-        this.product = productName;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    public double getAmount() {
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
-
 }

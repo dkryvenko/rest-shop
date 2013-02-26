@@ -1,6 +1,8 @@
 package com.dynamo.shop.model;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -9,15 +11,15 @@ import java.util.List;
  */
 public class Order {
 
-    private List<OrderItem> orderItems;
+    private List<OrderItem> orderItems = new LinkedList<OrderItem>();
 
     private String name;
     private String address;
     private String phone;
     private String comments;
-    private double amount;
-    private double discount;
-    private double total;
+    private BigDecimal amount;
+    private BigDecimal discount;
+    private BigDecimal total;
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
@@ -59,27 +61,27 @@ public class Order {
         this.comments = comments;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public double getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(double discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 }

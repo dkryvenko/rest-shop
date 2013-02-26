@@ -1,5 +1,7 @@
 package com.dynamo.shop.model;
 
+import java.math.BigDecimal;
+
 /**
  * Author: Dmytro Kryvenko
  * Date: 12/23/12
@@ -16,7 +18,7 @@ public class Product {
     private String description;
     private double weight;
     private double size;
-    private double price;
+    private BigDecimal price;
     private String smallThumb;
     private String mediumThumb;
     private String largeThumb;
@@ -69,11 +71,11 @@ public class Product {
         this.size = size;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
