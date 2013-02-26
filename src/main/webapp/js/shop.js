@@ -157,15 +157,6 @@ function makeViewOrderUnavailble() {
     $("#submitOrder").hide();
 }
 
-function showItemDetails(name) {
-    $("#" + name + " img").attr("src", "img/" + name + "_big.png");
-    $("#" + name).modal();
-}
-
-function closeItemDetails(name) {
-    $("#" + name).modal('hide');
-}
-
 function addItemToCart(id, category, product, price) {
     var itemCount = order.orderItems.length;
     for (var i = 0; i < itemCount; i++) {
