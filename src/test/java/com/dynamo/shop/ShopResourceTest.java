@@ -108,7 +108,7 @@ public class ShopResourceTest {
         order.getOrderItems().add(i1);
         order.getOrderItems().add(i2);
 
-        Order actualOrder = shopResource.getOrder(order);
+        Order actualOrder = shopResource.calculateOrder(order);
 
         Assert.assertEquals(new BigDecimal("400.00"), actualOrder.getAmount());
         Assert.assertEquals(new BigDecimal("0"), actualOrder.getDiscount());
@@ -116,8 +116,51 @@ public class ShopResourceTest {
         Assert.assertEquals(2, actualOrder.getOrderItems().size());
         Assert.assertEquals("product 2", actualOrder.getOrderItems().get(1).getProductName());
         Assert.assertEquals(new BigDecimal("300.00"), actualOrder.getOrderItems().get(1).getAmount());
+        Assert.assertEquals(new BigDecimal("150.00"), actualOrder.getOrderItems().get(1).getPrice());
         Assert.assertEquals("product 1", actualOrder.getOrderItems().get(0).getProductName());
         Assert.assertEquals(new BigDecimal("100.00"), actualOrder.getOrderItems().get(0).getAmount());
+    }
+
+    @Test
+    public void getOrder_discount_for_2_pizza() {
+        Product p1 = new Product();
+        p1.setId("101");
+        p1.setName("pizza 1");
+        p1.setCategory(Product.PRODUCT_TYPE_PIZZA);
+        p1.setPrice(BigDecimal.valueOf(100.0));
+        Product p2 = new Product();
+        p2.setId("102");
+        p2.setName("pizza 2");
+        p2.setCategory(Product.PRODUCT_TYPE_PIZZA);
+        p2.setPrice(BigDecimal.valueOf(150.00));
+        Product p3 = new Product();
+        p3.setId("102");
+        p3.setName("product 2");
+        p3.setPrice(BigDecimal.valueOf(150.0));
+        p3.setCategory(Product.PRODUCT_TYPE_BEVERAGE);
+        expectedProducts.put("101", p1);
+        expectedProducts.put("102", p2);
+        expectedProducts.put("103", p3);
+
+        Order order = new Order();
+        OrderItem i1 = new OrderItem();
+        i1.setProductId("101");
+        i1.setQuantity(1);
+        OrderItem i2 = new OrderItem();
+        i2.setProductId("102");
+        i2.setQuantity(1);
+        OrderItem i3 = new OrderItem();
+        i3.setProductId("103");
+        i3.setQuantity(1);
+        order.getOrderItems().add(i1);
+        order.getOrderItems().add(i2);
+        order.getOrderItems().add(i3);
+
+        Order actualOrder = shopResource.calculateOrder(order);
+
+        Assert.assertEquals(BigDecimal.valueOf(5.0), actualOrder.getDiscount());
+        Assert.assertEquals(BigDecimal.valueOf(400.0), actualOrder.getAmount());
+        Assert.assertEquals(BigDecimal.valueOf(380.0), actualOrder.getTotal());
     }
 
 }

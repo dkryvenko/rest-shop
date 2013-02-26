@@ -70,34 +70,56 @@ public class ShopResource {
         }
     }
 
-    @GET
-    @Path("/order")
+    @POST
+    @Path("/calculatedOrder")
+    @Consumes("application/json;charset=utf8")
     @Produces("application/json;charset=utf8")
-    public Order getOrder(Order order) {
-        BigDecimal orderAmount =  new BigDecimal("0.0");
-        BigDecimal orderDiscount = new BigDecimal("0");
-        BigDecimal orderTotal = new BigDecimal("0.0");
+    public Order calculateOrder(Order order) {
+        BigDecimal orderAmount =  BigDecimal.valueOf(0.0);
+        BigDecimal discount = BigDecimal.valueOf(0.0);
+        int pizzaItemCount = 0;
 
         for (OrderItem orderItem: order.getOrderItems()) {
             Product product = products.get(orderItem.getProductId());
+
             BigDecimal price = product.getPrice();
+            String productName = product.getName();
+
             int quantity = orderItem.getQuantity();
-            BigDecimal amount = price.multiply(new BigDecimal(quantity));
+            BigDecimal amount = price.multiply(BigDecimal.valueOf(quantity));
+
+            orderItem.setPrice(price);
             orderItem.setAmount(amount);
-            orderItem.setProductName(product.getName());
+            orderItem.setProductName(productName);
+
             orderAmount = orderAmount.add(amount);
+
+            if (Product.PRODUCT_TYPE_PIZZA.equals(product.getCategory())) {
+                pizzaItemCount++;
+            }
+        }
+
+        if (pizzaItemCount == 2) {
+            discount = BigDecimal.valueOf(5.0);
+        } else if (pizzaItemCount == 3) {
+            discount = BigDecimal.valueOf(7.0);
+        } else if (pizzaItemCount == 4) {
+            discount = BigDecimal.valueOf(10.0);
+        } else if (pizzaItemCount >= 5) {
+            discount = BigDecimal.valueOf(20.0);
         }
 
         order.setAmount(orderAmount);
-        order.setDiscount(orderDiscount);
-        order.setTotal(orderAmount);
+        order.setDiscount(discount);
+        BigDecimal orderDiscount = orderAmount.multiply(discount).divide(BigDecimal.valueOf(100.0));
+        order.setTotal(orderAmount.subtract(orderDiscount));
         return order;
     }
 
     @POST
-    @Path("/order")
+    @Path("/submittedOrder")
     @Consumes(MediaType.APPLICATION_JSON)
-    public void createOrder(Order order) throws Exception {
+    public void submitOrder(Order order) throws Exception {
         LOGGER.info("Order received.");
         LOGGER.info("Customer: " + order.getName());
         LOGGER.info("Address: " + order.getAddress());
