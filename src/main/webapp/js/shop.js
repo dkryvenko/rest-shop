@@ -6,7 +6,7 @@ $(document).ready(function () {
         interval: 5000
     });
     $("#submitOrder").click(function () {
-        viewOrder();
+        showOrder();
     });
     $("#order").hide();
     makeViewOrderUnavailble();
@@ -195,34 +195,34 @@ function updateItemQuantity(productId, quantity) {
     }
 }
 
-function calculateOrderTotal() {
-    var orderAmount = 0.0;
-    var itemCount = order.orderItems.length;
-    for (var i = 0; i < itemCount; i++) {
-        var price = order.orderItems[i].price;
-        var quantity = order.orderItems[i].quantity;
-        var amount = price * quantity;
-        order.orderItems[i].amount = amount;
-        orderAmount += amount;
-    }
+function calculateOrder() {
+    $.ajax({
+        url: "/shop/rest/calculatedOrder",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(order),
+        success: function(calculatedOrder) {
+            console.log(calculatedOrder);
+            order = calculatedOrder;
+        }
+    });
+}
 
-    var orderQuantity = getQuantity();
-    if (orderQuantity == 2) {
-        order.discount = 0.05;
-    } else if (orderQuantity == 3) {
-        order.discount = 0.07;
-    } else if (orderQuantity == 4) {
-        order.discount = 0.10;
-    } else if (orderQuantity == 5) {
-        order.discount = 0.15;
-    } else if (orderQuantity > 5) {
-        order.discount = 0.20;
-    } else {
-        order.discount = 0.0;
-    }
-
-    order.amount = orderAmount;
-    order.total = orderAmount - orderAmount * order.discount;
+function showOrder() {
+    calculateOrder();
+    $("#orderItems").empty();
+    $.each(order.orderItems, function(i, item) {
+        var orderItem = $("#orderItem").clone();
+        orderItem.removeAttr("id");
+        orderItem.removeAttr("style");
+        orderItem.find(".order-item-product-name").text(item.productName);
+        orderItem.find(".order-item-price").text(item.price + " грн/шт");
+        orderItem.find(".order-item-quantity").val(item.quantity);
+        orderItem.find(".order-item-amount").text(item.amount + " грн");
+        orderItem.appendTo("#orderItems");
+    });
+    $("#order").modal("show");
 }
 
 function viewOrder() {

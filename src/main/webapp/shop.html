@@ -90,6 +90,24 @@
     </div>
 </div>
 
+<div class="order-item row-fluid" style="visibility: hidden;" id="orderItem">
+    <div class="order-item-product-name span5 block pagination-centered"></div>
+    <div class="order-item-price span2 block pagination-centered"></div>
+    <div class="span2 pagination-centered">
+        <select class="order-item-quantity" onchange="changeQuantityHandler(event);">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <div class="order-item-amount span2 block pagination-centered"></div>
+    <div class="span1">
+        <a class="order-item-btn-remove btn btn-small btn-inverse" href="javascript:void(0);" onclick="removeItemHandler(event);">X</a>
+    </div>
+</div>
+
 <!----------------------------->
 <!-- end of template section -->
 <!----------------------------->
@@ -253,24 +271,6 @@
     </div>
 </div>
 
-<!-- template for shopping order item-->
-<div class="row-fluid" style="visibility: hidden;" id="orderItem">
-    <div class="span5 block pagination-centered" id="product"></div>
-    <div class="span2 block pagination-centered" id="price"></div>
-    <div class="span2 pagination-centered">
-        <select style="width: 50px;" id="quantity" onchange="changeQuantityHandler(event);">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-        </select>
-    </div>
-    <div class="span2 block pagination-centered" id="amount"></div>
-    <div class="span1">
-        <a class="btn btn-small btn-inverse" href="#" id="removeItem" onclick="removeItemHandler(event);">X</a>
-    </div>
-</div>
 </body>
 
 <script category="text/javascript">

@@ -41,7 +41,6 @@
     height: 30px;
 }
 
-
 .product-size {
 
 }
@@ -98,4 +97,12 @@
     background: transparent;
     width: 450px;
     height: 450px;
+}
+
+.order-item {
+
+}
+
+.order-item-quantity {
+    width: 50px;
 }
