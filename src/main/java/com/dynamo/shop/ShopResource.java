@@ -95,7 +95,7 @@ public class ShopResource {
             orderAmount = orderAmount.add(amount);
 
             if (Product.PRODUCT_TYPE_PIZZA.equals(product.getCategory())) {
-                pizzaItemCount++;
+                pizzaItemCount += quantity;
             }
         }
 
