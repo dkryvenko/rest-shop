@@ -157,31 +157,31 @@ function makeViewOrderUnavailble() {
     $("#submitOrder").hide();
 }
 
-function addItemToCart(productId) {
+function addItemToCart(itemId) {
     var itemCount = order.orderItems.length;
-    var orderItem = {
-        productId: productId,
+    order.orderItems[itemCount] =  {
+        productId: itemId,
         quantity: 1
-    }
-    order.orderItems[itemCount] = orderItem;
+    };
     makeViewOrderAvailable();
 }
 
-function removeItemFromCart(productId) {
+function removeItemFromCart(itemId) {
     var itemCount = order.orderItems.length;
     for (var i = 0; i < itemCount; i++) {
         var orderItem = order.orderItems[i];
-        if (orderItem.productId == productId) {
+        if (orderItem.productId == itemId) {
             order.orderItems.splice(i, 1);
+            return;
         }
     }
 }
 
-function updateItemQuantity(productId, quantity) {
+function updateItemQuantity(itemId, quantity) {
     var itemCount = order.orderItems.length;
     for (var i = 0; i < itemCount; i++) {
         var orderItem = order.orderItems[i];
-        if (orderItem.productId == productId) {
+        if (orderItem.productId == itemId) {
             orderItem.quantity = quantity;
         }
     }
@@ -207,6 +207,10 @@ function calculateAndShowOrder() {
                     updateItemQuantity(item.productId, orderItem.find(".order-item-quantity").val());
                     calculateAndShowOrder();
                 });
+                orderItem.find(".order-item-btn-remove").click(function() {
+                    removeItemFromCart(item.productId);
+                    calculateAndShowOrder();
+                })
                 orderItem.find(".order-item-amount").text(item.amount + " грн");
                 orderItem.appendTo("#orderItems");
             });
@@ -268,9 +272,9 @@ function changeQuantityHandler(event) {
 
 }
 
-function removeItemHandler(event) {
-    var itemId = event.target.attributes["item_id"].value;
-    removeItemFromCart(itemId);
+function removeItemHandler(productId) {
+    removeItemFromCart(productId);
+    calculateAndShowOrder();
 }
 
 function onMouseOverHandler(event) {
