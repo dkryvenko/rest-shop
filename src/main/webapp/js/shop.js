@@ -204,14 +204,14 @@ function calculateAndShowOrder() {
                 orderItem.find(".order-item-price").text(item.price + " грн/шт");
                 orderItem.find(".order-item-quantity").val(item.quantity);
                 orderItem.find(".order-item-quantity").change(function() {
-                    updateItemQuantity(item.productId, orderItem.find(".order-item-quantity").val(););
+                    updateItemQuantity(item.productId, orderItem.find(".order-item-quantity").val());
                     calculateAndShowOrder();
                 });
                 orderItem.find(".order-item-amount").text(item.amount + " грн");
                 orderItem.appendTo("#orderItems");
             });
             $("#orderAmount").html(calculatedOrder.amount);
-            $("#orderDiscount").html(calculatedOrder.discount * 100);
+            $("#orderDiscount").html(calculatedOrder.discount);
             $("#orderTotal").html(calculatedOrder.total);
 
             $("#orderAmount").formatCurrency({symbol: ''});
