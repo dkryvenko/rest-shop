@@ -99,6 +99,10 @@
     height: 450px;
 }
 
+.order {
+    background: transparent;
+}
+
 .order-item {
 
 }

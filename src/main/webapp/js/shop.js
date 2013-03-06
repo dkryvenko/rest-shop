@@ -210,15 +210,11 @@ function calculateAndShowOrder() {
                 orderItem.find(".order-item-amount").text(item.amount + " грн");
                 orderItem.appendTo("#orderItems");
             });
-            $("#orderAmount").html(calculatedOrder.amount);
-            $("#orderDiscount").html(calculatedOrder.discount);
-            $("#orderTotal").html(calculatedOrder.total);
+            $("#orderAmount").html(calculatedOrder.amount).formatCurrency({symbol: ''});
+            $("#orderDiscount").html(calculatedOrder.discount).formatCurrency({symbol: '', roundToDecimalPlace: 0});
+            $("#orderTotal").html(calculatedOrder.total).formatCurrency({symbol: ''});
 
-            $("#orderAmount").formatCurrency({symbol: ''});
-            $("#orderDiscount").formatCurrency({symbol: '', roundToDecimalPlace: 0});
-            $("#orderTotal").formatCurrency({symbol: ''});
-
-            $("#order").modal("show");
+            $(".order").modal("show");
         }
     });
 }
